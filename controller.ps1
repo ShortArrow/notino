@@ -1,6 +1,7 @@
 param(
-    [string]$portName = "COM3",
-    [int]$baudRate = 9600,
+    [string]$PortName = "COM3",
+    [int]$BaudRate = 9600,
+    [int]$DelaySecond = 0,
     [switch]$On,
     [switch]$Off
 )
@@ -12,15 +13,17 @@ if (!$On -and !$Off) {
 
 $port = New-Object System.IO.Ports.SerialPort
 
-$port.PortName = $portName
-$port.BaudRate = $baudRate
+$port.PortName = $PortName
+$port.BaudRate = $BaudRate
 $port.DtrEnable = $true
+
+Start-Sleep -Seconds $DelaySecond
 
 try {
     $port.Open()
     if ($On) {
       $port.Write("H")
-    } 
+    }
     if ($Off){
       $port.Write("L")
     }
