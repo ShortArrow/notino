@@ -1,5 +1,7 @@
 # Notino
 
+Notify with Arduino built-in LED for hooks of Claude code.
+
 ## Summmary
 
 Notino is a tool that allows `claude code` to notify you when it is about to stop running, or when it has finished running.
